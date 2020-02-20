@@ -19,7 +19,7 @@ func main() {
 		i := i
 		go func() {
 			mu.RLock()
-			defer mu.RUnlock()
+			mu.RUnlock()
 			t := time.Now()
 			times[i] = t
 			wg.Done()
