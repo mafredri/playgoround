@@ -20,6 +20,7 @@ func main() {
 		go func() {
 			mu.RLock()
 			mu.RUnlock()
+
 			t := time.Now()
 			times[i] = t
 			wg.Done()
@@ -27,6 +28,7 @@ func main() {
 	}
 
 	mu.Unlock()
+	wg.Wait()
 
 	timesCnt := make(map[time.Time]int)
 	for _, t := range times {
